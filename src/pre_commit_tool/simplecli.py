@@ -124,4 +124,8 @@ def _sample_main():
     else:
         handle_unknown_command(cmd)  # raises
 
-    sys.exit(status)
+    return status
+
+
+# if __name__ == "__main__":
+#     sys.exit(_sample_main())
