@@ -34,7 +34,7 @@ repos:
         args: [--heading-level, '2', --skip-level, '1']
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    # Ruff versino.
+    # Ruff version
     rev: v0.7.0
     hooks:
       # Emulate isort
@@ -45,8 +45,8 @@ repos:
 
       # Auto-format Python code
       - id: ruff-format
-          # args: [dir]
+        # args: [dir]
 
       # Run the linter
       - id: ruff
-          # args: [dir]
+        # args: [dir]

@@ -4,6 +4,7 @@
 extends: default
 
 rules:
+  comments-indentation: disable
   document-end: disable
   document-start:
     present: true
@@ -19,7 +20,7 @@ rules:
     quote-type: any
     required: only-when-needed
     # extra-required: ["^http:", "^https:"]
-    # ignore: |
-    #   .pre-commit-config.yaml
+    ignore: |
+      .pre-commit-config.yaml
   truthy:
     allowed-values: ["false", "true"]
