@@ -53,16 +53,20 @@ This project uses:
 - `uv` for project create/init, dependency management, virtual environment management
 - `ruff` for linting and auto-formatting
 - `pre-commit` for automatically running linting/formatting/etc. at pre-commit time
+- `bumpver` for automatically bumping version numbers (and tagging, etc.)
 - `editorconfig` for setting indent, end-of-line, etc. for many editors/IDEs
 
 
 ## References
 
+- **bumpver**       ( [GitHub][bumpver-src] | [PyPI][bumpver-pypi] )
 - **editorconfig**  ( [Home][editorconfig] | [Config][editorconfig-config] )
 - **pre-commit**    ( [Home][pre-commit] | [GitHub][pre-commit-src] | [Config][pre-commit-config] )
 - **ruff**          ( [GitHub][ruff-src] | [Documentation][ruff-doc] )
 - **uv**            ( [Install][uv-install] | [GitHub][uv-src] | [Documentation][uv-doc] )
 
+ [bumpver-src]: https://github.com/mbarkhau/bumpver
+ [bumpver-pypi]: https://pypi.org/project/bumpver/
 
  [editorconfig]: https://editorconfig.org/
  [editorconfig-config]: .editorconfig
