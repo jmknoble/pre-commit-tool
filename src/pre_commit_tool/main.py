@@ -20,12 +20,12 @@ A simple wrapper around some [pre-commit][] commands that remembers some
 needed arguments for you.
 
 Commands:
-    help    - Prin this help message
-    install - Install pre-commit hooks using 'pre-commit install-hooks ...'
-    run     - Run pre-commit hooks using 'pre-commit run-hooks ...'
-    sync    - Sync and garbage-collect pre-commit hooks
-    update  - Update pre-commit hooks using 'pre-commit autoupdate ...'
-    use     - "Use" (install) the pre-commit tool with 'uv tool install ...'
+    help     - Print this help message
+    install  - Install pre-commit hooks using 'pre-commit install-hooks ...'
+    run      - Run pre-commit hooks using 'pre-commit run-hooks ...'
+    sync     - Sync and garbage-collect pre-commit hooks
+    update   - Update pre-commit hooks using 'pre-commit autoupdate ...'
+    use      - "Use" (install) the pre-commit tool with 'uv tool install ...'
     validate - Validate the pre-commit config file
 
 Most commands require a '.pre-commit-config.yaml' to be present.
@@ -83,7 +83,7 @@ def validate_config(_prog, _cmd, args):
 
 
 def main():
-    (prog, cmd, args) = simple_cli(default_prog="pre-commit-tool.py")
+    (prog, cmd, args) = simple_cli(default_prog="pre-commit-tool")
 
     help_options = {"-h"}
     help_commands = {"help"}
