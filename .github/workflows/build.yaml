@@ -1,5 +1,5 @@
 ---
-name: Build Distributions
+name: Build Python Packages
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -8,7 +8,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   build:
-    name: Build Distributions
+    name: Build Packages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,5 +25,30 @@ jobs:
       - name: Check Python source
         run: uv run ruff check && uv run ruff format --diff
 
-      - name: Build Python distributions
+      - name: Build Python packages
         run: uv build --no-cache
+
+      - name: Store artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-packages
+          path: dist/
+          retention-days: 1
+
+  publish:
+    name: Publish Packages to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pre-commit-tool
+    permissions:
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
+    steps:
+      - name: Retrieve artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-packages
+          path: dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
