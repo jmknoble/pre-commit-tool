@@ -3,8 +3,6 @@ name: Build Distributions
 
 on:  # yamllint disable-line rule:truthy
   push:
-    branches:
-      - main
     tags:
       - "*.*.*"
 
