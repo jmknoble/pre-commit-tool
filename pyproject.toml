@@ -1,3 +1,21 @@
+[project]
+name = "pre-commit-tool"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jim Knoble", email = "jmknoble@pobox.com" }
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+pre-commit-tool = "pre_commit_tool:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [tool.ruff]
 line-length = 120
 
