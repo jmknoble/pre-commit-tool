@@ -1,0 +1,26 @@
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+extend-select = [
+    "I",  # isort
+    "S",  # flake8-bandit
+    "B",  # flake8-bugbear
+    "PL",  # pylint
+    # "UP",  # pyupgrade
+]
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+
+[tool.ruff.lint.pylint]
+max-args = 10
+max-branches = 15
+max-statementns = 60
+# max-bool-expr = 5
+# max-locals = 15
+# max-nested-blocks = 5
+# max-positional-args = 5
+# max-public-methods = 20
+# max-returns = 6
+
