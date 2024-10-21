@@ -34,11 +34,16 @@ case-sensitive = true
 [tool.ruff.lint.pylint]
 max-args = 10
 max-branches = 15
-max-statementns = 60
+max-statements = 60
 # max-bool-expr = 5
 # max-locals = 15
 # max-nested-blocks = 5
 # max-positional-args = 5
 # max-public-methods = 20
 # max-returns = 6
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.7.0",
+]
 
