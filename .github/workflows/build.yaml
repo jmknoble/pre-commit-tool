@@ -58,6 +58,7 @@ jobs:
           retention-days: 1
 
   publish:
+    # https://packaging.python.org/en/latest/guides/section-build-and-publish/
     name: Publish Packages to PyPI
     needs: build
     runs-on: ubuntu-latest
