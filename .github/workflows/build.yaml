@@ -1,5 +1,5 @@
 ---
-name: Build Python Packages
+name: Build
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -7,23 +7,45 @@ on:  # yamllint disable-line rule:truthy
       - "*.*.*"
 
 jobs:
-  build:
-    name: Build Packages
+  check:
+    name: Check Source Code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install uv
-        run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"  # yamllint disable-line rule:quoted-strings
 
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Set up yamllint
+        run: uv tool install yamllint
+
+      - name: Run yamllint
+        run: uv tool run yamllint .
+
       - name: Check Python source
         run: uv run ruff check && uv run ruff format --diff
+
+  build:
+    name: Build Packages
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"  # yamllint disable-line rule:quoted-strings
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Build Python packages
         run: uv build --no-cache
