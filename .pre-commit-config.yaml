@@ -14,7 +14,7 @@ repos:
       - id: mixed-line-ending
         alias: check-line-endings
         name: check-line-endings
-        args: [--fix=no]
+        args: ['--fix=no']
 
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
@@ -25,13 +25,13 @@ repos:
     rev: v2.6.5
     hooks:
       - id: json-indent
-        args: [--newlines=linux]
+        args: ['--newlines=linux']
 
   - repo: https://github.com/jmknoble/markdown-toc
     rev: v0.3.0
     hooks:
       - id: markdown-toc
-        args: [--heading-level, '2', --skip-level, '1']
+        args: ['--heading-level', '2', '--skip-level', '1']
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version
@@ -41,12 +41,12 @@ repos:
       - id: ruff
         name: ruff-isort
         alias: ruff-isort
-        args: [--config, 'lint.select = ["I"]', --fix]
+        args: ['--config', 'lint.select = ["I"]', '--fix']
 
       # Auto-format Python code
       - id: ruff-format
-        # args: [dir]
+        # args: ['project-dir/']
 
       # Run the linter
       - id: ruff
-        # args: [dir]
+        # args: ['project-dir/']
