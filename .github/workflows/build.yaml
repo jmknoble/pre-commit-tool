@@ -61,7 +61,7 @@ jobs:
 
   publish:
     # https://packaging.python.org/en/latest/guides/section-build-and-publish/
-    name: Publish Packages to PyPI
+    name: Publish Packages
     needs: build
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}  # only for version tags
     runs-on: ubuntu-latest
@@ -77,5 +77,5 @@ jobs:
           name: python-packages
           path: dist/
 
-      # - name: Publish to PyPI
-      #   uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
