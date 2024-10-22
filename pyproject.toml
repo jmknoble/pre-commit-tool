@@ -1,13 +1,25 @@
 [project]
 name = "pre-commit-tool"
 version = "0.1.1"
-description = "Add your description here"
+description = "Very simple human-friendlier wrapper around pre-commit"
 readme = "README.md"
 authors = [
-    { name = "Jim Knoble", email = "jmknoble@pobox.com" }
+    { name = "jmknoble", email = "jmknoble@pobox.com" }
 ]
 requires-python = ">=3.10"
 dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Repository = "https://github.com/jmknoble/pre-commit-tool"
 
 [project.scripts]
 pre-commit-tool = "pre_commit_tool:main"
@@ -15,6 +27,12 @@ pre-commit-tool = "pre_commit_tool:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "bumpver>=2023.1129",
+    "ruff>=0.7.0",
+]
 
 [tool.ruff]
 line-length = 120
@@ -41,12 +59,6 @@ max-statements = 60
 # max-positional-args = 5
 # max-public-methods = 20
 # max-returns = 6
-
-[tool.uv]
-dev-dependencies = [
-    "bumpver>=2023.1129",
-    "ruff>=0.7.0",
-]
 
 [tool.bumpver]
 current_version = "0.1.1"
