@@ -1,6 +1,7 @@
 import subprocess
 import sys
 
+from . import __version__
 from .simplecli import (
     STATUS_FAILURE,
     STATUS_SUCCESS,
@@ -8,6 +9,7 @@ from .simplecli import (
     handle_ambiguous_command,
     handle_unknown_command,
     print_help,
+    print_version,
     simple_cli,
 )
 
@@ -27,6 +29,7 @@ Commands:
     update   - Update pre-commit hooks using 'pre-commit autoupdate ...'
     use      - "Use" (install) the pre-commit tool with 'uv tool install ...'
     validate - Validate the pre-commit config file
+    version  - Print this program's version
 
 Most commands require a '.pre-commit-config.yaml' to be present.
 
@@ -87,6 +90,8 @@ def main():
 
     help_options = {"-h"}
     help_commands = {"help"}
+    version_options = {"-V"}
+    version_commands = {"version"}
     hook_commands = {
         "install": {"install-hooks"},
         "run": {"run-hooks"},
@@ -98,11 +103,12 @@ def main():
         "validate": {"validate-config"},
     }
 
-    most_commands = set() | help_commands
+    most_commands = set() | help_commands | version_commands
     for commands_dict in [hook_commands, tool_commands]:
         for _key, command_set in commands_dict.items():
             most_commands |= command_set
     all_help_commands = help_commands | help_options
+    all_version_commands = version_commands | version_options
 
     (cmd, matching_commands) = handle_abbreviated_command(cmd, most_commands)
     if len(matching_commands) > 1:
@@ -111,6 +117,8 @@ def main():
     status = STATUS_FAILURE
     if cmd in all_help_commands:
         status = print_help(prog, help_text=HELP_TEXT)
+    elif cmd in all_version_commands:
+        status = print_version(prog, __version__)
 
     elif cmd in hook_commands["install"]:
         status = install_hooks(prog, cmd, args)

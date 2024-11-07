@@ -74,6 +74,11 @@ def print_help(prog, help_text):
     return STATUS_HELP
 
 
+def print_version(prog, version):
+    print(f"{prog} v{version}")
+    return STATUS_HELP
+
+
 @dataclasses.dataclass
 class _SampleCliOptions:
     verbose: bool

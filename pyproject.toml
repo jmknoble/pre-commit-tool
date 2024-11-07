@@ -28,7 +28,7 @@ dependencies = []
 Repository = "https://github.com/jmknoble/pre-commit-tool"
 
 [project.scripts]
-pre-commit-tool = "pre_commit_tool:main"
+pre-commit-tool = "pre_commit_tool.__main__:main"
 
 
 [dependency-groups]
@@ -113,7 +113,7 @@ push = true
     '^version = "{pep440_version}"',
     '^current_version = "{version}"',
 ]
-# "src/pre_commit_tool/__init__.py" = [
-#     '^__version__ = "{pep440_version}"',
-# ]
+ "src/pre_commit_tool/__init__.py" = [
+     '^__version__ = "{pep440_version}"',
+ ]
 
