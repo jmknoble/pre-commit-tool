@@ -6,8 +6,12 @@ readme = "README.md"
 authors = [
     { name = "jmknoble", email = "jmknoble@pobox.com" }
 ]
-requires-python = ">=3.10"
-dependencies = []
+license = { file = "LICENSE" }
+keywords = [
+    "cli",
+    "git",
+    "pre-commit",
+]
 classifiers = [  # https://pypi.org/classifiers/
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -17,6 +21,8 @@ classifiers = [  # https://pypi.org/classifiers/
     "Topic :: Software Development",
     "Topic :: Utilities",
 ]
+requires-python = ">=3.10"
+dependencies = []
 
 [project.urls]
 Repository = "https://github.com/jmknoble/pre-commit-tool"
@@ -24,25 +30,50 @@ Repository = "https://github.com/jmknoble/pre-commit-tool"
 [project.scripts]
 pre-commit-tool = "pre_commit_tool:main"
 
+
+[dependency-groups]
+dev = [
+    "bumpver>=2023.1129",
+    "ruff>=0.7.0",
+]
+
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.uv]
-dev-dependencies = [
-    "bumpver>=2023.1129",
-    "ruff>=0.7.0",
+[tool.hatch.build.targets.sdist]
+# https://hatch.pypa.io/latest/config/build/#file-selection
+#
+# include = []
+exclude = [
+    ".[!.]*",
+    "DEVELOPING.md",
+    "build",
+    "dist",
+    "docs",
+    "examples",
+    "tests",
+    "tests.*",
+    "util",
+    "*.egg-info",
 ]
+
 
 [tool.ruff]
 line-length = 120
 
 [tool.ruff.lint]
 extend-select = [
+    "W",  # warnings
+    "N",  # pep8-naming
     "I",  # isort
     "S",  # flake8-bandit
     "B",  # flake8-bugbear
+    "A",  # flake8-builtins
+    "YTT",  # flake8-2020
     "PL",  # pylint
+    # "D",  # pydocstyle
     # "UP",  # pyupgrade
 ]
 
@@ -59,6 +90,7 @@ max-statements = 60
 # max-positional-args = 5
 # max-public-methods = 20
 # max-returns = 6
+
 
 [tool.bumpver]
 current_version = "v0.1.6"
@@ -81,4 +113,7 @@ push = true
     '^version = "{pep440_version}"',
     '^current_version = "{version}"',
 ]
+# "src/pre_commit_tool/__init__.py" = [
+#     '^__version__ = "{pep440_version}"',
+# ]
 
