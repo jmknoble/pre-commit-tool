@@ -1,6 +1,6 @@
 [project]
 name = "pre-commit-tool"
-version = "0.1.6"
+version = "0.1.7"
 description = "Very simple human-friendlier wrapper around pre-commit"
 readme = "README.md"
 authors = [
@@ -93,7 +93,7 @@ max-statements = 60
 
 
 [tool.bumpver]
-current_version = "v0.1.6"
+current_version = "v0.1.7"
 version_pattern = "vMAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 tag_message = "{new_version}"
