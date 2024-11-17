@@ -33,8 +33,9 @@ pre-commit-tool = "pre_commit_tool.__main__:main"
 
 [dependency-groups]
 dev = [
-    "bumpver>=2023.1129",
-    "ruff>=0.7.0",
+    "bumpver>=2024.1130",
+    "invoke>=2.2.0",
+    "ruff>=0.7.2",
 ]
 
 
